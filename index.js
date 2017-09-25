@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 const publicPath = __dirname + '/public'
 
 app.use(bodyParser.urlencoded({extended : true}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('wwwroot'));
 
 app.get('/', function (req, res) {
     res.send('Hello from root');
@@ -22,7 +22,7 @@ app.get('/login', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
-     if (req.body.user === 'asam' || req.body.pass === 'dumkode') {
+     if (req.body.user === 'admin' || req.body.pass === 'dumkode') {
         res.sendFile(publicPath + '/loggedin.html', function (err) {
             // handle error
         });
